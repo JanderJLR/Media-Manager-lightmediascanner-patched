@@ -490,7 +490,7 @@ main(int argc, char *argv[])
     GError *error = NULL;
     struct app app;
     int i;
-    gboolean start_service = FALSE;
+    gboolean start_service = TRUE;
 
     if (argc < 2) {
         fprintf(stderr, "Missing action, see --help.\n");
@@ -525,8 +525,8 @@ main(int argc, char *argv[])
         return EXIT_FAILURE;
     }
 
-    //if (start_service && !start_service_by_name())
-      //  return EXIT_FAILURE;
+    if (start_service && !start_service_by_name())
+        return EXIT_FAILURE;
 
     app.timer = NULL;
     app.loop = g_main_loop_new(NULL, FALSE);
